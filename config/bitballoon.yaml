@@ -2,7 +2,7 @@
 account:
   client_id: INSERT_YOURS_HERE
   client_secret: INSERT_YOURS_HERE
-  access_token: INSERT_YOUR_HERE
+  access_token:
 site:
   id:
   url:
