@@ -1,5 +1,9 @@
 source 'http://rubygems.org'
 
 gem 'rake'
-gem 'bitballoon'
+
+group :development do
+  gem 'bitballoon'
+  gem 'terminal-notifier'
+end
 

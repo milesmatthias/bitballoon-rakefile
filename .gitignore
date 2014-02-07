@@ -11,6 +11,8 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
+Gemfile.lock
+# just allow others to have newest version
 
 # YARD artifacts
 .yardoc

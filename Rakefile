@@ -5,8 +5,9 @@ require 'yaml'
 
 # this is currently experimental. DONT USE
 
-CONFIG_FILE = 'config/bitballoon.yaml'
 BUILD_DIR = 'build'
+CONFIG_FILE = 'config/bitballoon.yaml'
+YOUR_SITE_NAME = 'AwesomeSite'
 
 namespace :bitballoon do
 
@@ -44,7 +45,7 @@ namespace :bitballoon do
   def notify_term(url)
     begin
       require 'terminal-notifier'
-      system "terminal-notifier -title 'dojo4' -message 'Deploy completed successfully to #{ url }.' -sound default"
+      system "terminal-notifier -title #{YOUR_SITE_NAME} -message 'Deploy completed successfully to #{ url }.' -sound default"
     rescue LoadError
     end
   end
