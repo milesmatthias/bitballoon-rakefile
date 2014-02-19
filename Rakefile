@@ -63,7 +63,7 @@ namespace :bitballoon do
       site = bitballoon.sites.get($config['site']['id'] || $config['site']['url'])
       puts 'the site exists, so simply updating...'
       site.update(:dir => BUILD_DIR)
-    rescue
+    rescue BitBalloon::Client::NotFoundError
       # if site hasn't been created yet, create it
       puts 'the site does NOT exist, so creating it'
       site = bitballoon.sites.create(:dir => BUILD_DIR)
@@ -98,7 +98,7 @@ namespace :bitballoon do
       # if site exists, just update
       site = bitballoon.sites.get($config['site']['id'] || $config['site']['url'])
       site.destroy!
-    rescue
+    rescue BitBalloon::Client::NotFoundError
       puts "no site to destroy. so doing nothing."
     end
   end
