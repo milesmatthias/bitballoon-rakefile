@@ -34,12 +34,20 @@ namespace :bitballoon do
       bitballoon.authorize_from_credentials!
       $config['account']['access_token'] = bitballoon.access_token
       save_config
+      bitballoon
     else
       puts 'using token to authenticate'
       bitballoon = BitBalloon::Client.new(:access_token => $config['account']['access_token'])
+      begin
+        bitballoon.request(:get, 'users')
+        bitballoon
+      rescue BitBalloon::Client::AuthenticationError
+        puts 'token has been revoked or updated, so clearing & using creds to auth and get new token'
+        $config['account']['access_token'] = nil
+        save_config
+        auth        
+      end
     end
-    
-    bitballoon
   end
 
   def notify_term(url)
